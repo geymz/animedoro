@@ -176,14 +176,14 @@ function App() {
             </div>
           </div>
           <div className="spotify">
-            <iframe className="regu-frame" title="iframe"
+            <iframe className="regu-frame" title="iframe-regu"
                     src="https://open.spotify.com/embed/playlist/4gf0brlPTjLxd7rxQXVMVW?utm_source=generator&theme=0"
                     width="300" height="352" allowFullScreen=""
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy">
             </iframe>
 
-            <iframe className="resp-frame"
+            <iframe className="resp-frame title="iframe-resp"
                     src="https://open.spotify.com/embed/playlist/4gf0brlPTjLxd7rxQXVMVW?utm_source=generator&theme=0"
                     width="100%" height="82" allowFullScreen=""
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
