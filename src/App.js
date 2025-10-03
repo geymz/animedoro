@@ -1,9 +1,9 @@
-import myNeighborTotoro from './myNeighborTotoro.png';
-import onlyYesterday from './onlyYesterday.png';
-import porcoRosso from './porcoRosso.png';
-import princessMononoke from './princessMononoke.jpg';
-import spiritedAway from './spiritedAway.jpg';
-import theBoyAndTheHeron from './theBoyAndTheHeron.png';
+import myNeighborTotoro from './assets/myNeighborTotoro.png';
+import onlyYesterday from './assets/onlyYesterday.png';
+import porcoRosso from './assets/porcoRosso.png';
+import princessMononoke from './assets/princessMononoke.jpg';
+import spiritedAway from './assets/spiritedAway.jpg';
+import theBoyAndTheHeron from './assets/theBoyAndTheHeron.png';
 
 import {useState} from "react";
 import './sass/style.css';
