@@ -57,8 +57,4 @@ You must have **Node.js** installed.
 <img width="1918" height="873" alt="Ekran görüntüsü 2025-10-04 163700" src="https://github.com/user-attachments/assets/6ba5af36-d327-4446-a989-34b479e47de8" />
 
 
-| Desktop View | Mobile View |
-| :--- | :--- |
-| **[INSERT DESKTOP SCREENSHOT URL HERE]** | **[INSERT MOBILE SCREENSHOT URL HERE]** |
-
 
