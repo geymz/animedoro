@@ -1,308 +1,473 @@
 @import 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css';
 
+
+$spotify-green: rgb(30, 216, 96);
+$dark-bg: rgba(34, 34, 34, 0.85);
+$primary-color: #457b9d;
+$danger-color: #e63946;
+
 body {
-  position: relative;
-  overflow: hidden;
-  user-select: none;
-  .background {
     position: relative;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-  }
+    overflow: hidden;
+    user-select: none;
+    
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+    -webkit-user-select: none;
+    -moz-user-select: none;
 
-  .show-spotify-button {
-    display: none;
-  }
+    .background {
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100vh;
+    }
 
-  .all-card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: row;
-    gap: 300px;
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
 
-    .main-card {
-      justify-content: center;
-      text-align: center;
-
-      h2 {
-        color: #fff;
-        font-size: 30px;
-      }
-
-      .buttons {
+    .control-icons {
+        position: absolute;
+        top: 20px;
+        width: 96%;
         display: flex;
-        flex-direction: row;
-        gap: 10px;
+        justify-content: space-between;
+        padding: 0 2%;
+        z-index: 1000;
 
-        .btn {
-          display: flex;
-          gap: 5px;
-          padding: 10px 15px;
-          border-radius: 15px;
-          background-color: transparent;
-          border: 2px solid #fff;
-          color: white;
-          font-size: 16px;
-          cursor: pointer;
-          transition: .3s ease all;
+        .icon-toggle {
+            background: none;
+            border: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            transition: color 0.3s ease;
+            z-index: 1001;
 
-          &:hover {
-            background-color: white;
-            color: black;
-          }
+            &:hover {
+                color: #a8dadc; 
+            }
         }
+    }
 
-        #work {
-          background-color: white;
-          color: black;
-        }
-      }
-
-      .counter {
-        font-size: 70px;
-        font-weight: 500;
+  
+    .calendar-card, .todo-list-card {
+        position: absolute;
+        padding: 20px;
+        background-color: $dark-bg;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        z-index: 999;
         color: white;
-      }
+        width: 250px;
+    }
 
-      .maintance {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
+    .todo-list-card {
+        top: 80px; 
+        left: 20px;
 
-        .start {
-          background-color: black;
-          color: white;
-          padding: 10px 30px;
-          border-radius: 50px;
-          font-size: 16px;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          letter-spacing: 1px;
-          transition: .3s ease all;
-
-          &:hover {
-            background-color: #fff;
-            color: black;
-          }
-        }
-
-        span {
-          font-size: 30px;
-          color: white;
-          cursor: pointer;
-        }
-
-        .gear {
-          position: relative;
-        }
-
-        .pasive {
-          display: none;
-          visibility: hidden;
-          .list {
+        .input-group {
             display: flex;
-            flex-direction: column;
-            width: 200px;
-            height: 225px;
-            overflow-y: auto;
-            border-left: 2px solid #888;;
-            overflow-x: hidden;
-
-            &::-webkit-scrollbar {
-              width: 8px;
+            margin-bottom: 15px;
+            input {
+                flex-grow: 1;
+                padding: 8px;
+                border: none;
+                border-radius: 5px 0 0 5px;
+                outline: none;
             }
-
-            &::-webkit-scrollbar-track {
-              background: rgb(40,40,40);
-            }
-
-            &::-webkit-scrollbar-thumb {
-              background: #888;
-              border-radius: 5px;
-            }
-
-            &::-webkit-scrollbar-thumb:hover {
-              background: #555;
-            }
-
-            .item {
-              display: block;
-              width: 200px;
-              list-style-type: none;
-
-              img {
-                width: 100%;
+            button {
+                padding: 8px 12px;
+                border: none;
+                background-color: $primary-color;
+                color: white;
                 cursor: pointer;
-              }
+                border-radius: 0 5px 5px 0;
+                transition: background-color 0.3s;
+                &:hover {
+                    background-color: darken($primary-color, 10%);
+                }
             }
-          }
         }
-
-        .active {
-          display: flex;
-          visibility: visible;
-          position: absolute;
-          top: 60%;
-          left: 25%;
+        .tasks-list {
+            list-style: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+            .delete-btn {
+                background: none;
+                border: none;
+                color: $danger-color;
+                padding: 0;
+                border-radius: 0;
+                cursor: pointer;
+                font-size: 18px;
+            }
+            .empty-message {
+                font-style: italic;
+                color: #ccc;
+                text-align: center;
+            }
         }
-      }
     }
 
-    .spotify {
-
-      iframe {
-        border-radius:12px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        border: 10px solid white;
-      }
-
-      .regu-frame {
-        display: flex;
-        visibility: visible;
-      }
-      .resp-frame {
-        display: none;
-        visibility: hidden;
-      }
+    .calendar-card {
+        top: 80px; 
+        right: 20px;
     }
-  }
-}
-
-@media (max-width: 900px) {
-
-  body {
 
     .show-spotify-button {
-      display: block;
-      position: fixed;
-      top: 50px;
-      right: 20px;
-      z-index: 9999;
-      border: none;
-      background-color: transparent;
-      font-size: 30px;
-      color: rgb(30,216,96);
-      cursor: pointer;
-
-      i {
-        padding: 10px;
-        border-right: 2px solid rgb(30,216,96);
-        border-top: 2px solid rgb(30,216,96);
-        border-radius: 50%;
-      }
+        display: none !important;
     }
 
     .all-card {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-20%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        display: flex;
+        flex-direction: row;
+        gap: 220px; 
+        align-items: flex-start;
 
-      .main-card {
+        .main-card {
+            justify-content: center;
+            text-align: center;
 
-        .maintance {
-
-          .pasive {
-            .list {
-              display: flex;
-              flex-direction: row;
-              gap: 4px;
-              //width: 1160px;
-              width: 450px;
-              height: 125px;
-              padding-bottom: 10px;
-              border-left: none;
-              flex-wrap: wrap;
-
-              &::-webkit-scrollbar {
-                height: 8px;
-              }
-
-              &::-webkit-scrollbar-track {
-                background: rgb(40,40,40);
-              }
-
-              &::-webkit-scrollbar-thumb {
-                background: #888;
-                border-radius: 5px;
-              }
-
-              &::-webkit-scrollbar-thumb:hover {
-                background: #555;
-              }
-
-              .item {
-                display: inline-flex;
-                width: 200px;
-                list-style-type: none;
-              }
+            h2 {
+                color: #fff;
+                font-size: 30px;
             }
-          }
 
-          .active {
+            .buttons {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                .btn {
+                    display: flex;
+                    gap: 5px;
+                    padding: 10px 15px;
+                    border-radius: 15px;
+                    background-color: transparent;
+                    border: 2px solid #fff;
+                    color: white;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: .3s ease all;
+
+                    &:hover {
+                        background-color: white;
+                        color: black;
+                    }
+                }
+
+                .active-mode {
+                  background-color: white !important; 
+                  color: black !important;
+                }
+
+                #work {
+                    background-color: white;
+                    color: black;
+                }
+            }
+
+            .counter {
+                font-size: 70px;
+                font-weight: 500;
+                color: white;
+            }
+
+            .maintance {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+
+                .start {
+                    background-color: black;
+                    color: white;
+                    padding: 10px 30px;
+                    border-radius: 50px;
+                    width: 140px;
+                    font-size: 16px;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    letter-spacing: 1px;
+                    transition: .3s ease all;
+
+                    &:hover {
+                        background-color: #fff;
+                        color: black;
+                    }
+                }
+
+                span {
+                    font-size: 30px;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                .gear {
+                    position: relative;
+                }
+
+                .pasive {
+                    display: none;
+                    visibility: hidden;
+                    
+                    .list {
+                      position: absolute;
+                        display: flex;
+                        left: 40px;
+                        flex-direction: column;
+                        width: 200px;
+                        height: 225px;
+                        overflow-y: auto;
+                        border-left: 2px solid #888;
+                        overflow-x: hidden;
+
+                        
+                        &::-webkit-scrollbar {
+                            width: 8px;
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            background: rgb(40, 40, 40);
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background: #888;
+                            border-radius: 5px;
+                        }
+
+                        &::-webkit-scrollbar-thumb:hover {
+                            background: #555;
+                        }
+
+                        .item {
+                            display: block;
+                            width: 200px;
+                            list-style-type: none;
+
+                            img {
+                                width: 100%;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .active {
+                    display: flex;
+                    visibility: visible;
+                    position: absolute;
+                    top: 60%;
+                    left: 25%;
+                }
+            }
+        }
+
+        .spotify {
             display: flex;
-            visibility: visible;
-            position: absolute;
-            top: 110%;
-            left: -26%;
-          }
-        }
-      }
+            flex-direction: column;
+            align-items: center;
 
-      .spotify {
+            iframe {
+                border-radius: 12px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                border: none;
+            }
 
-        .regu-frame {
-          display: none;
-          visibility: hidden;
+            .regu-frame {
+                display: flex;
+                visibility: visible;
+            }
+            .resp-frame {
+                display: none;
+                visibility: hidden;
+            }
         }
-        .resp-frame {
-          display: none;
-          visibility: hidden;
-          position: fixed;
-          top: 0;
-          left: -15%;
-          transform: translateY(-100%);
-          width: 350px;
-        }
-      }
     }
-  }
+}
+
+
+@media (max-width: 900px) {
+    body {
+        
+        .show-spotify-button {
+            display: none !important;
+        }
+
+        .all-card {
+            transform: translate(-50%, -50%); 
+            flex-direction: column; 
+            gap: 50px; 
+        }
+
+        .calendar-card {
+            top: 80px;
+            right: 10px;
+            width: calc(100% - 60px); 
+            left: 10px;
+        }
+
+        .todo-list-card {
+            top: 80px;
+            left: 10px;
+            width: calc(100% - 60px); 
+            right: 10px;
+        }
+
+        .all-card .main-card .maintance {
+            .pasive {
+                .list {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 4px;
+                    width: 450px;
+                    height: 125px;
+                    padding-bottom: 10px;
+                    border-left: none;
+                    flex-wrap: wrap;
+
+                    &::-webkit-scrollbar {
+                        height: 8px;
+                    }
+
+                  
+                    .item {
+                        display: inline-flex;
+                        width: 200px;
+                        list-style-type: none;
+                    }
+                }
+            }
+
+            .active {
+                top: 110%;
+                left: -26%;
+            }
+        }
+
+        .all-card .spotify {
+            .regu-frame {
+                display: none !important;;
+                visibility: hidden !important;;
+            }
+          
+            .resp-frame { 
+                display: flex !important;;
+                visibility: visible !important;;
+                position: fixed;
+                top: 0;
+                left: -30%;
+                transform: translateY(-100%);
+                width: 350px;
+            }
+        }
+    }
 }
 
 @media (max-width: 500px) {
-
-  body {
-
-    .all-card {
-      .main-card {
-        .maintance {
-          .pasive {
-            left: -37%;
-            justify-content: left;
-            .list {
-              width: 350px;
-              padding-right: 10px;
-              justify-content: right;
+    body {
+        .all-card .main-card .maintance {
+            .pasive {
+                left: -37%;
+                justify-content: left;
+                .list {
+                    width: 350px;
+                    padding-right: 10px;
+                    justify-content: right;
+                }
             }
-          }
         }
-      }
     }
-  }
+}
+
+
+.calendar-card {
+
+    .react-calendar-override {
+        width: 100%;
+        max-width: 100%;
+        background: none; 
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        font-family: inherit;
+        line-height: 1.1;
+    }
+
+
+    .react-calendar__navigation button,
+    .react-calendar__month-view__weekdays,
+    .react-calendar__tile {
+        color: white;
+    }
+
+
+    .react-calendar__navigation {
+        height: 44px;
+        margin-bottom: 1em;
+    }
+
+    .react-calendar__navigation button:enabled:hover,
+    .react-calendar__navigation button:enabled:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+
+
+    .react-calendar__month-view__weekdays__weekday {
+        padding: 0.5em;
+        abbr {
+            text-decoration: none; 
+        }
+    }
+    
+
+    .react-calendar__tile {
+        padding: 10px 6.6667px;
+        border-radius: 4px;
+        &:enabled:hover,
+        &:enabled:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+
+    .react-calendar__tile--active {
+        background-color: #457b9d !important; 
+        color: white;
+        border-radius: 4px;
+    }
+
+
+    .react-calendar__tile--now {
+        background: rgba(69, 123, 157, 0.5); 
+        border-radius: 4px;
+        &:enabled:hover,
+        &:enabled:focus {
+            background-color: #457b9d;
+        }
+    }
 }

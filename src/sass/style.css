@@ -3,6 +3,8 @@ body {
   position: relative;
   overflow: hidden;
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 body .background {
   position: relative;
@@ -19,8 +21,101 @@ body .overlay {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
+body .control-icons {
+  position: absolute;
+  top: 20px;
+  width: 96%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+  z-index: 1000;
+}
+body .control-icons .icon-toggle {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease;
+  z-index: 1001;
+}
+body .control-icons .icon-toggle:hover {
+  color: #a8dadc;
+}
+body .calendar-card, body .todo-list-card {
+  position: absolute;
+  padding: 20px;
+  background-color: rgba(34, 34, 34, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  color: white;
+  width: 250px;
+}
+body .todo-list-card {
+  top: 80px;
+  left: 20px;
+}
+body .todo-list-card .input-group {
+  display: flex;
+  margin-bottom: 15px;
+}
+body .todo-list-card .input-group input {
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+body .todo-list-card .input-group button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #457b9d;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.3s;
+}
+body .todo-list-card .input-group button:hover {
+  background-color: rgb(53.4292035398, 95.2433628319, 121.5707964602);
+}
+body .todo-list-card .tasks-list {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+body .todo-list-card .tasks-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+body .todo-list-card .tasks-list li:last-child {
+  border-bottom: none;
+}
+body .todo-list-card .tasks-list .delete-btn {
+  background: none;
+  border: none;
+  color: #e63946;
+  padding: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 18px;
+}
+body .todo-list-card .tasks-list .empty-message {
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+}
+body .calendar-card {
+  top: 80px;
+  right: 20px;
+}
 body .show-spotify-button {
-  display: none;
+  display: none !important;
 }
 body .all-card {
   position: absolute;
@@ -29,7 +124,8 @@ body .all-card {
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
-  gap: 300px;
+  gap: 220px;
+  align-items: flex-start;
 }
 body .all-card .main-card {
   justify-content: center;
@@ -60,6 +156,10 @@ body .all-card .main-card .buttons .btn:hover {
   background-color: white;
   color: black;
 }
+body .all-card .main-card .buttons .active-mode {
+  background-color: white !important;
+  color: black !important;
+}
 body .all-card .main-card .buttons #work {
   background-color: white;
   color: black;
@@ -80,6 +180,7 @@ body .all-card .main-card .maintance .start {
   color: white;
   padding: 10px 30px;
   border-radius: 50px;
+  width: 140px;
   font-size: 16px;
   border: none;
   outline: none;
@@ -104,7 +205,9 @@ body .all-card .main-card .maintance .pasive {
   visibility: hidden;
 }
 body .all-card .main-card .maintance .pasive .list {
+  position: absolute;
   display: flex;
+  left: 40px;
   flex-direction: column;
   width: 200px;
   height: 225px;
@@ -141,6 +244,11 @@ body .all-card .main-card .maintance .active {
   top: 60%;
   left: 25%;
 }
+body .all-card .spotify {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 body .all-card .spotify iframe {
   border-radius: 12px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -157,28 +265,24 @@ body .all-card .spotify .resp-frame {
 
 @media (max-width: 900px) {
   body .show-spotify-button {
-    display: block;
-    position: fixed;
-    top: 50px;
-    right: 20px;
-    z-index: 9999;
-    border: none;
-    background-color: transparent;
-    font-size: 30px;
-    color: rgb(30, 216, 96);
-    cursor: pointer;
-  }
-  body .show-spotify-button i {
-    padding: 10px;
-    border-right: 2px solid rgb(30, 216, 96);
-    border-top: 2px solid rgb(30, 216, 96);
-    border-radius: 50%;
+    display: none !important;
   }
   body .all-card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-20%, -50%);
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    gap: 50px;
+  }
+  body .calendar-card {
+    top: 80px;
+    right: 10px;
+    width: calc(100% - 60px);
+    left: 10px;
+  }
+  body .todo-list-card {
+    top: 80px;
+    left: 10px;
+    width: calc(100% - 60px);
+    right: 10px;
   }
   body .all-card .main-card .maintance .pasive .list {
     display: flex;
@@ -193,38 +297,25 @@ body .all-card .spotify .resp-frame {
   body .all-card .main-card .maintance .pasive .list::-webkit-scrollbar {
     height: 8px;
   }
-  body .all-card .main-card .maintance .pasive .list::-webkit-scrollbar-track {
-    background: rgb(40, 40, 40);
-  }
-  body .all-card .main-card .maintance .pasive .list::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-  }
-  body .all-card .main-card .maintance .pasive .list::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
   body .all-card .main-card .maintance .pasive .list .item {
     display: inline-flex;
     width: 200px;
     list-style-type: none;
   }
   body .all-card .main-card .maintance .active {
-    display: flex;
-    visibility: visible;
-    position: absolute;
     top: 110%;
     left: -26%;
   }
   body .all-card .spotify .regu-frame {
-    display: none;
-    visibility: hidden;
+    display: none !important;
+    visibility: hidden !important;
   }
   body .all-card .spotify .resp-frame {
-    display: none;
-    visibility: hidden;
+    display: flex !important;
+    visibility: visible !important;
     position: fixed;
     top: 0;
-    left: -15%;
+    left: -30%;
     transform: translateY(-100%);
     width: 350px;
   }
@@ -240,5 +331,51 @@ body .all-card .spotify .resp-frame {
     justify-content: right;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
+.calendar-card .react-calendar-override {
+  width: 100%;
+  max-width: 100%;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-family: inherit;
+  line-height: 1.1;
+}
+.calendar-card .react-calendar__navigation button,
+.calendar-card .react-calendar__month-view__weekdays,
+.calendar-card .react-calendar__tile {
+  color: white;
+}
+.calendar-card .react-calendar__navigation {
+  height: 44px;
+  margin-bottom: 1em;
+}
+.calendar-card .react-calendar__navigation button:enabled:hover,
+.calendar-card .react-calendar__navigation button:enabled:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.calendar-card .react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+.calendar-card .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+.calendar-card .react-calendar__tile {
+  padding: 10px 6.6667px;
+  border-radius: 4px;
+}
+.calendar-card .react-calendar__tile:enabled:hover, .calendar-card .react-calendar__tile:enabled:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.calendar-card .react-calendar__tile--active {
+  background-color: #457b9d !important;
+  color: white;
+  border-radius: 4px;
+}
+.calendar-card .react-calendar__tile--now {
+  background: rgba(69, 123, 157, 0.5);
+  border-radius: 4px;
+}
+.calendar-card .react-calendar__tile--now:enabled:hover, .calendar-card .react-calendar__tile--now:enabled:focus {
+  background-color: #457b9d;
+}/*# sourceMappingURL=style.css.map */
