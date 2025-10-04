@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+## 🌟 Animedoro Timer: Focus & Anime Breaks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a modern **Pomodoro Timer** built with **React** and **Sass**. It's designed to help you balance deep work sessions (50 min) with refreshing anime breaks (25 min).
 
-## Available Scripts
+It features a clean UI, persistent **To-Do List** saving (via Local Storage), dynamic background switching, and integrated **Spotify** player.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Work/Watch Modes:** Quick toggle between 50:00 (Work) and 25:00 (Watch) timers.
+* **Persistent To-Do:** Your tasks are saved automatically.
+* **Custom Backgrounds:** Change the ambiance with anime-themed backgrounds (using the gear icon).
+* **Integrated Spotify:** Listen to focus music directly in the app.
+* **Responsive Overlays:** To-Do List and Calendar open as centered modals that close on outside click.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Frontend:** React
+* **Styling:** Sass (SCSS)
+* **External:** `react-calendar`
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You must have **Node.js** installed.
 
-### `npm run eject`
+### Installation & Run
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+    cd YOUR_REPO_NAME
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2.  **Install project packages:**
+    ```bash
+    npm install
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3.  **Start the application:**
+    ```bash
+    npm start
+    ```
+    The app will open in your browser at `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🖼️ Preview
+<img width="1918" height="867" alt="Ekran görüntüsü 2025-10-04 163617" src="https://github.com/user-attachments/assets/47816fd4-1326-43fd-a974-1aff82d7d035" />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img width="1918" height="873" alt="Ekran görüntüsü 2025-10-04 163700" src="https://github.com/user-attachments/assets/6ba5af36-d327-4446-a989-34b479e47de8" />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+| Desktop View | Mobile View |
+| :--- | :--- |
+| **[INSERT DESKTOP SCREENSHOT URL HERE]** | **[INSERT MOBILE SCREENSHOT URL HERE]** |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
